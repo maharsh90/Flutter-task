@@ -13,10 +13,9 @@ class RegisterPage extends StatefulWidget {
   State<RegisterPage> createState() => _RegisterPageState();
 }
 
-String countryDropValues = countries.first;
-String stateDropValues = states.first;
-
 class _RegisterPageState extends State<RegisterPage> {
+  String countryDropValues = countries.first;
+  String stateDropValues = states.first;
   TextEditingController dateController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
@@ -187,5 +186,11 @@ class _RegisterPageState extends State<RegisterPage> {
         dateController.text = picked.toString().split(" ")[0];
       });
     }
+  }
+
+  @override
+  void dispose() {
+    dateController.dispose();
+    super.dispose();
   }
 }
