@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marchtask8/pageview_design2.dart';
+import 'package:march11task/tab_bar_design3.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,16 +8,17 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Page view',
+      title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: false,
+        fontFamily: 'sofia',
       ),
-      // home: PageViewDemo(),
-      // home: Screen6(),
-      home: const PageViewDesign2(),
+      // home: AlertDialogPage(),
+      home: const TabBarDesign3(),
     );
   }
 }
