@@ -43,7 +43,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   "Login",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
+                SizedBox(
+                  height: 10,
+                ),
                 const Text("Please enter the details below to continue"),
+                SizedBox(
+                  height: 20,
+                ),
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
@@ -112,9 +118,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     hintText: 'Enter your password',
                   ),
                 ),
-                TextButton(
-                  onPressed: () {},
-                  child: const Text('Forgot Password'),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'Forgot Password',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
                 ),
                 SizedBox(
                   height: 40,
@@ -150,6 +165,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     Expanded(child: Divider()),
                   ],
                 ),
+                const SizedBox(
+                  height: 30,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -157,8 +175,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: 50,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            const BoxShadow(
+                          boxShadow: const [
+                            BoxShadow(
                                 offset: Offset(0.5, 0.5),
                                 color: Colors.grey,
                                 spreadRadius: 1,
@@ -181,8 +199,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: 50,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            const BoxShadow(
+                          boxShadow: const [
+                            BoxShadow(
                                 offset: Offset(0.5, 0.5),
                                 color: Colors.grey,
                                 spreadRadius: 1,
@@ -205,8 +223,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: 50,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            const BoxShadow(
+                          boxShadow: const [
+                            BoxShadow(
                                 offset: Offset(0.5, 0.5),
                                 color: Colors.grey,
                                 spreadRadius: 1,
@@ -223,7 +241,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
+                const SizedBox(
+                  height: 20,
+                ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text("Don't have an account?"),
                     TextButton(
