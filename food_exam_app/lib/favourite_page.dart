@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_exam_app/model/hotel.dart';
+import 'package:food_exam_app/ui_helper/app_color.dart';
 
 import 'model/product.dart';
 
@@ -31,14 +32,15 @@ class _FavouritePageState extends State<FavouritePage>
     with SingleTickerProviderStateMixin {
   List<Widget> widgets = [
     Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.only(left: 16.0),
       child: Container(
-        child: Text(
+        margin: const EdgeInsets.only(top: 12),
+        child: const Text(
             "Lorem ipsum dolor sit amet consectetur. Sit adipiscing maecenas malesuada lacus ultrices ac habitant. Enim tristique in integer euismod mauris aenean in. Odio sed gravida nunc non duis. Suspendisse ac lectus lobortis auctor aliquam nunc. Facilisis aliquet aliquam in mattis sapien pretium ornare. Read More..."),
       ),
     ),
     Container(
-      child: Center(
+      child: const Center(
         child: Text("sd"),
       ),
     ),
@@ -60,167 +62,261 @@ class _FavouritePageState extends State<FavouritePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ScreenUtilInit(
-        designSize: Size(390, 1385),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 320,
-                width: 390,
-                child: Stack(
-                  children: [
-                    Image.asset(
-                      widget.hotels.img,
-                      width: 390,
-                      fit: BoxFit.cover,
-                      height: 320,
-                    ),
-                    Positioned(
-                      top: 64,
-                      left: 16,
-                      child: Container(
-                        alignment: Alignment.center,
-                        height: 44,
-                        width: 44,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: Color(0xFFF1F1F1),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 320,
+              width: 390,
+              child: Stack(
+                children: [
+                  Image.asset(
+                    widget.hotels.img,
+                    width: 390,
+                    fit: BoxFit.cover,
+                    height: 320,
+                  ),
+                  Positioned(
+                    top: 64,
+                    left: 16,
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 44,
+                      width: 44,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: AppColor().lightGrey,
+                      ),
+                      child: IconButton(
+                        style: IconButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
                         ),
-                        child: IconButton(
-                          style: IconButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(
-                            Icons.arrow_back,
-                            size: 24,
-                          ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          size: 24,
                         ),
                       ),
                     ),
-                    Positioned(
-                      top: 64,
-                      right: 16,
-                      child: Container(
-                        alignment: Alignment.center,
-                        height: 44,
-                        width: 44,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: Color(0xFFF1F1F1),
+                  ),
+                  Positioned(
+                    top: 64,
+                    right: 16,
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 44,
+                      width: 44,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: AppColor().lightGrey,
+                      ),
+                      child: IconButton(
+                        style: IconButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
                         ),
-                        child: IconButton(
-                          style: IconButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50),
-                            ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(
+                          Icons.more_vert,
+                          size: 24,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            20.verticalSpace,
+            Row(
+                children: List.generate(3, (int index) {
+              return Container(
+                alignment: Alignment.center,
+                height: 31,
+                width: 86,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: AppColor().lightGrey,
+                ),
+                margin: const EdgeInsets.only(left: 8),
+                child: Text(listOfCategories[index]),
+              );
+            }).toList()),
+            12.verticalSpace,
+            SizedBox(
+              height: 52,
+              width: ScreenUtil().screenWidth,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      width: 256,
+                      height: 52,
+                      child: Text(
+                        widget.hotels.title,
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700,
+                          color: AppColor().lightBlack,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      height: 44,
+                      width: 44,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: AppColor().orange,
+                      ),
+                      child: IconButton(
+                        style: IconButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
                           ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(
-                            Icons.more_vert,
-                            size: 24,
-                          ),
+                        ),
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.favorite_border,
+                          size: 24,
+                          color: AppColor().white,
                         ),
                       ),
                     ),
                   ],
                 ),
               ),
-              20.verticalSpace,
-              Row(
-                  children: List.generate(3, (int index) {
-                return Container(
-                  alignment: Alignment.center,
-                  height: 31,
-                  width: 86,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color(0xFFF1F1F1),
-                  ),
-                  margin: EdgeInsets.only(left: 8),
-                  child: Text(listOfCategories[index]),
-                );
-              }).toList()),
-              12.verticalSpace,
-              SizedBox(
-                height: 52,
-                width: 256,
-                child: Text(
-                  widget.hotels.title,
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xFF323643),
-                  ),
-                ),
-              ),
-              8.verticalSpace,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            ),
+            8.verticalSpace,
+            Padding(
+              padding: const EdgeInsets.only(left: 14.0),
+              child: Row(
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.navigation),
-                      Text(
-                          widget.hotels.distance.toString() + " away from you"),
+                      Icon(
+                        Icons.navigation,
+                        color: AppColor().lightBlack,
+                      ),
+                      Text("${widget.hotels.distance} away from you"),
                     ],
                   ),
+                  15.horizontalSpace,
                   Row(
                     children: [
-                      Icon(Icons.star),
-                      Text(
-                          widget.hotels.raings.toString() + " (1.1k+ Reviews)"),
+                      Icon(
+                        Icons.star,
+                        color: AppColor().yellow,
+                      ),
+                      Text("${widget.hotels.raings} (1.1k+ Reviews)"),
                     ],
                   ),
                 ],
               ),
-              12.verticalSpace,
-              Text("\$20.00 /per plate"),
-              24.verticalSpace,
-              SizedBox(
-                height: 25,
-                width: double.infinity,
-                child: TabBar(
-                  labelColor: Color(0xFF323643),
-                  unselectedLabelColor: Color(0xFF8C9099),
-                  indicatorSize: TabBarIndicatorSize.label,
-                  controller: tabController,
-                  tabs: [
-                    Tab(
-                      text: "Description",
+            ),
+            12.verticalSpace,
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0),
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "\$20.00",
+                      style: TextStyle(
+                          color: AppColor().lightBlack,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 22),
                     ),
-                    Tab(
-                      text: "Reviews & Others",
+                    TextSpan(
+                      text: "  /per plate",
+                      style: TextStyle(
+                          color: AppColor().lightBlack,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400),
                     ),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 150,
-                width: 358,
-                child: TabBarView(
-                  children: widgets,
-                  controller: tabController,
-                ),
+            ),
+            24.verticalSpace,
+            SizedBox(
+              height: 25,
+              width: double.infinity,
+              child: TabBar(
+                labelColor: AppColor().lightBlack,
+                unselectedLabelColor: AppColor().grey,
+                indicatorSize: TabBarIndicatorSize.label,
+                indicatorColor: AppColor().orange,
+                controller: tabController,
+                tabs: const [
+                  Tab(
+                    text: "Description",
+                  ),
+                  Tab(
+                    text: "Reviews & Others",
+                  ),
+                ],
               ),
-              SizedBox(
+            ),
+            SizedBox(
+              height: 150,
+              width: 358,
+              child: TabBarView(
+                controller: tabController,
+                children: widgets,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Row(
+                    children: [
+                      Text(
+                        "Recommended you",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w700),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Text("View All"),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.arrow_forward,
+                          size: 15,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0),
+              child: SizedBox(
                 height: 630,
                 width: 390,
                 child: GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: lstProducts.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       mainAxisSpacing: 24,
                       crossAxisSpacing: 18,
                       crossAxisCount: 2,
-                      mainAxisExtent: 259),
+                      mainAxisExtent: 279),
                   itemBuilder: (context, index) {
                     return SizedBox(
                       height: 359,
@@ -248,7 +344,7 @@ class _FavouritePageState extends State<FavouritePage>
                                     width: 30,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(50),
-                                      color: Color(0xFFF1F1F1),
+                                      color: AppColor().lightGrey,
                                     ),
                                     child: IconButton(
                                       style: IconButton.styleFrom(
@@ -258,7 +354,7 @@ class _FavouritePageState extends State<FavouritePage>
                                         ),
                                       ),
                                       onPressed: () {},
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.favorite_border,
                                         size: 17,
                                       ),
@@ -269,83 +365,113 @@ class _FavouritePageState extends State<FavouritePage>
                             ),
                           ),
                           12.verticalSpace,
-                          Text(
-                            lstProducts[index].title,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 14,
+                          SizedBox(
+                            height: 17,
+                            width: 170,
+                            child: Text(
+                              lstProducts[index].title,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 14,
+                              ),
                             ),
                           ),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.navigation,
-                                size: 14,
-                              ),
-                              Text(
-                                lstProducts[index].distance.toString() +
-                                    " away from you",
-                                style: TextStyle(
-                                    color: Color(0xFF8C9099),
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ],
+                          23.verticalSpace,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Row(
+                              children: [
+                                const Icon(
+                                  Icons.navigation,
+                                  size: 14,
+                                ),
+                                4.horizontalSpace,
+                                Text(
+                                  "${lstProducts[index].distance} away from you",
+                                  style: TextStyle(
+                                      color: AppColor().grey,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ],
+                            ),
                           ),
-                          4.verticalSpace,
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.star,
-                                color: Color(0xFFFFC529),
-                                size: 14,
-                              ),
-                              Text(
-                                lstProducts[index].rating.toString() +
-                                    " (1.1k +Reviews)",
-                                style: TextStyle(
-                                    color: Color(0xFF8C9099),
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ],
+                          4.horizontalSpace,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.star,
+                                  color: AppColor().yellow,
+                                  size: 14,
+                                ),
+                                4.horizontalSpace,
+                                Text(
+                                  "${lstProducts[index].rating} (1.1k +Reviews)",
+                                  style: TextStyle(
+                                      color: AppColor().grey,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ],
+                            ),
                           ),
-                          Row(
-                            children: [
-                              Row(
-                                children: [
-                                  Text(lstProducts[index].price.toString() +
-                                      "/per plate"),
-                                ],
-                              ),
-                              40.horizontalSpace,
-                              Row(
-                                children: [
-                                  Container(
-                                    alignment: Alignment.center,
-                                    height: 30,
-                                    width: 30,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(30),
-                                      color: Color(0xFFF1F1F1),
-                                    ),
-                                    child: IconButton(
-                                      style: IconButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(50),
+                          6.verticalSpace,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Row(
+                              children: [
+                                RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text:
+                                            lstProducts[index].price.toString(),
+                                        style: TextStyle(
+                                            color: AppColor().orange,
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 14),
+                                      ),
+                                      TextSpan(
+                                        text: "  /per plate",
+                                        style: TextStyle(
+                                            color: AppColor().lightBlack,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                40.horizontalSpace,
+                                Row(
+                                  children: [
+                                    Container(
+                                      alignment: Alignment.center,
+                                      height: 30,
+                                      width: 30,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        color: AppColor().lightGrey,
+                                      ),
+                                      child: IconButton(
+                                        style: IconButton.styleFrom(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                          ),
+                                        ),
+                                        onPressed: () {},
+                                        icon: const Icon(
+                                          Icons.add,
+                                          size: 15,
                                         ),
                                       ),
-                                      onPressed: () {},
-                                      icon: Icon(
-                                        Icons.add,
-                                        size: 15,
-                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -353,98 +479,99 @@ class _FavouritePageState extends State<FavouritePage>
                   },
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      SizedBox(
-                        height: 55,
-                        width: 170,
-                        child: Material(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12)),
-                          color: Colors.grey.shade300,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    SizedBox(
+                      height: 55,
+                      width: 170,
+                      child: Material(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12)),
+                        color: Colors.grey.shade300,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              alignment: Alignment.center,
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                color: AppColor().lightGrey,
+                              ),
+                              child: IconButton(
                                 alignment: Alignment.center,
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  color: Color(0xFFF1F1F1),
+                                style: IconButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
                                 ),
-                                child: IconButton(
-                                  style: IconButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                  ),
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.minimize,
-                                    size: 17,
-                                  ),
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.minimize_sharp,
+                                  size: 17,
                                 ),
                               ),
-                              Text("2"),
-                              Container(
-                                alignment: Alignment.center,
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  color: Color(0xFFF1F1F1),
-                                ),
-                                child: IconButton(
-                                  style: IconButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                  ),
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.add,
-                                    size: 17,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      SizedBox(
-                        height: 55,
-                        width: 170,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
                             ),
-                            backgroundColor: Color(0xFFFE724C),
-                          ),
-                          onPressed: () {},
-                          child: Text(
-                            'Add to cart',
-                            style: TextStyle(
-                                color: Color(0xFFFFFFFF),
-                                fontWeight: FontWeight.w600,
-                                fontSize: 18),
-                          ),
+                            const Text("2"),
+                            Container(
+                              alignment: Alignment.center,
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                color: AppColor().lightGrey,
+                              ),
+                              child: IconButton(
+                                style: IconButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                ),
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.add,
+                                  size: 17,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  )
-                ],
-              ),
-            ],
-          ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      height: 55,
+                      width: 170,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          backgroundColor: AppColor().orange,
+                        ),
+                        onPressed: () {},
+                        child: Text(
+                          'Add to cart',
+                          style: TextStyle(
+                              color: AppColor().white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ],
         ),
       ),
     );

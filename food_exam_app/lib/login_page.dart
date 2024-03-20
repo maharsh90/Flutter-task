@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_exam_app/home_page.dart';
+import 'package:food_exam_app/ui_helper/app_color.dart';
+import 'package:food_exam_app/widgets/build_elevated_icon_button.dart';
+import 'package:food_exam_app/widgets/build_normal_button.dart';
+import 'package:food_exam_app/widgets/build_text_form_field.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
 class LoginPage extends StatefulWidget {
@@ -15,13 +19,15 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+      SystemUiOverlayStyle(
+          statusBarColor: AppColor().lightOrange,
+          statusBarIconBrightness: Brightness.light),
     );
     return Scaffold(
-      backgroundColor: Colors.pinkAccent.shade100,
+      backgroundColor: AppColor().lightOrange,
       body: Stack(
         children: [
-          Positioned(
+          const Positioned(
             top: 10,
             left: 154,
             child: Image(
@@ -43,19 +49,20 @@ class buildBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
-      height: 720,
-      width: 390,
+      padding: const EdgeInsets.all(16),
+      height: 740,
+      width: ScreenUtil().screenWidth,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
         ),
-        color: Colors.white,
+        color: AppColor().white,
       ),
       child: Form(
         key: formKey,
         child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -63,7 +70,11 @@ class buildBottomSheet extends StatelessWidget {
                 alignment: Alignment.center,
                 child: SizedBox(
                   width: 60,
-                  child: Divider(color: Color(0xFFD9D9D9), height: 6),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: const Divider(
+                        thickness: 5, color: Color(0xFFD9D9D9), height: 6),
+                  ),
                 ),
               ),
               Align(
@@ -73,12 +84,12 @@ class buildBottomSheet extends StatelessWidget {
                   width: 36,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Color(0xFFD9D9D9),
+                    color: const Color(0xFFD9D9D9),
                   ),
                   child: IconButton(
                     style: IconButton.styleFrom(
                         // fixedSize: Size.fromWidth(36),
-                        backgroundColor: Color(0xFFD9D9D9),
+                        backgroundColor: const Color(0xFFD9D9D9),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50),
                         )),
@@ -86,21 +97,20 @@ class buildBottomSheet extends StatelessWidget {
                     icon: Icon(
                       Icons.close,
                       size: 20,
-                      color: Color(0xFF323643),
+                      color: AppColor().lightBlack,
                     ),
                   ),
                 ),
               ),
-              40.verticalSpace,
               SizedBox(
-                height: 72,
+                height: 70,
                 width: 358,
                 child: Text(
                   "Get Started with Lobster",
                   style: TextStyle(
-                    fontSize: 32,
+                    fontSize: 30,
                     fontWeight: FontWeight.w700,
-                    color: Color(0xFF323643),
+                    color: AppColor().lightBlack,
                   ),
                 ),
               ),
@@ -111,48 +121,34 @@ class buildBottomSheet extends StatelessWidget {
                   text: TextSpan(children: [
                     TextSpan(
                       text: "Don’t have an account?",
-                      style: TextStyle(color: Colors.grey),
+                      style: TextStyle(color: AppColor().grey),
                     ),
                     TextSpan(
                         text: " Signup Now",
-                        style: TextStyle(color: Color(0xFF323643))),
+                        style: TextStyle(color: AppColor().lightBlack)),
                   ]),
                 ),
               ),
               25.verticalSpace,
-              TextFormField(
-                validator: MultiValidator([
-                  RequiredValidator(errorText: "please enter email"),
-                  EmailValidator(errorText: "Please provide valid email id"),
-                ]),
-                decoration: InputDecoration(
-                  hintText: "Email or Phone Number",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(
-                      color: Color(0xFF32364333),
-                    ),
-                  ),
-                ),
-              ),
+              buildTextFormField(
+                  txt: "Email or Phone Number",
+                  textInputType: TextInputType.emailAddress,
+                  multiValidator: MultiValidator([
+                    RequiredValidator(errorText: "please enter email"),
+                    EmailValidator(errorText: "Please provide valid email id"),
+                  ]),
+                  textInputAction: TextInputAction.next),
               15.verticalSpace,
-              TextFormField(
-                validator: MultiValidator([
-                  RequiredValidator(errorText: "Please enter password"),
-                  MinLengthValidator(5,
-                      errorText:
-                          "please enter minimum 5 digit password at least"),
-                ]),
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(
-                      color: Color(0xFF32364333),
-                    ),
-                  ),
-                  hintText: "Enter Password",
-                ),
-              ),
+              buildTextFormField(
+                  txt: "Enter Password",
+                  textInputType: TextInputType.text,
+                  multiValidator: MultiValidator([
+                    RequiredValidator(errorText: "Please enter password"),
+                    MinLengthValidator(5,
+                        errorText:
+                            "please enter minimum 5 digit password at least"),
+                  ]),
+                  textInputAction: TextInputAction.done),
               15.verticalSpace,
               Align(
                 alignment: Alignment.topRight,
@@ -160,72 +156,50 @@ class buildBottomSheet extends StatelessWidget {
                   onPressed: () {},
                   child: Text(
                     "Forgot Password?",
-                    style: TextStyle(color: Color(0xFF323643)),
+                    style: TextStyle(color: AppColor().lightBlack),
                   ),
                 ),
               ),
               15.verticalSpace,
               SizedBox(
                 height: 55,
-                width: 358,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    backgroundColor: Color(0xFFFE724C),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
+                width: ScreenUtil().screenWidth,
+                child: buildButton(
+                  txt: "Log In",
+                  voidcallback: () {
+                    if (formKey.currentState!.validate()) {
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomePage(),
-                        ));
-                    if (formKey.currentState!.validate()) {}
+                          builder: (context) => const HomePage(),
+                        ),
+                      );
+                    }
                   },
-                  child: Text(
-                    'Log In',
-                    style: TextStyle(
-                        color: Color(0xFFFFFFFF),
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18),
-                  ),
                 ),
               ),
               20.verticalSpace,
-              Align(alignment: Alignment.center, child: Text("Or Continue")),
+              const Align(
+                  alignment: Alignment.center, child: Text("Or Continue")),
+              20.verticalSpace,
+              SizedBox(
+                  height: 54,
+                  width: ScreenUtil().screenWidth,
+                  child: buildElevatedIconButton(
+                      txt: "Continue with Facebook",
+                      icon: Icons.facebook,
+                      txtColor: AppColor().white,
+                      voidcallback: () {})),
               20.verticalSpace,
               SizedBox(
                 height: 54,
-                width: 356,
+                width: ScreenUtil().screenWidth,
                 child: ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    backgroundColor: Color(0xFF1877F2),
-                  ),
-                  icon: Icon(
-                    Icons.facebook,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {},
-                  label: Text(
-                    'Continue with Facebook',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-              20.verticalSpace,
-              SizedBox(
-                height: 54,
-                width: 356,
-                child: ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    backgroundColor: Color(0xFFFFFFFF),
+                    backgroundColor: AppColor().white,
                   ),
                   icon: Image.asset(
                     "./images/google1.png",
@@ -236,7 +210,8 @@ class buildBottomSheet extends StatelessWidget {
                   label: Text(
                     'Continue with Google',
                     style: TextStyle(
-                        color: Color(0xFF000000),
+                        fontFamily: "montserrat_regular",
+                        color: AppColor().grey,
                         fontWeight: FontWeight.w600,
                         fontSize: 18),
                   ),
@@ -244,26 +219,14 @@ class buildBottomSheet extends StatelessWidget {
               ),
               21.verticalSpace,
               SizedBox(
-                height: 54,
-                width: 356,
-                child: ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    backgroundColor: Color(0xFF323643),
-                  ),
-                  icon: Icon(Icons.apple),
-                  onPressed: () {},
-                  label: Text(
-                    'Continue with Apple',
-                    style: TextStyle(
-                        color: Color(0xFFFFFFFF),
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18),
-                  ),
-                ),
-              ),
+                  height: 54,
+                  width: ScreenUtil().screenWidth,
+                  child: buildElevatedIconButton(
+                      txt: "Continue with Apple",
+                      icon: Icons.apple,
+                      backgroundColor: AppColor().lightBlack,
+                      txtColor: AppColor().white,
+                      voidcallback: () {})),
             ],
           ),
         ),
