@@ -177,7 +177,7 @@ class _HomePageState extends State<HomePage> {
             ),
             8.verticalSpace,
             Container(
-              height: 330,
+              height: 340,
               width: 390,
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -374,11 +374,13 @@ class _HomePageState extends State<HomePage> {
                     Text("Explore best items and enjoy your meal"),
                     Expanded(
                       child: GridView.builder(
+                        physics: NeverScrollableScrollPhysics(),
                         itemCount: lstProducts.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            mainAxisSpacing: 84,
+                            mainAxisSpacing: 24,
                             crossAxisSpacing: 18,
-                            crossAxisCount: 2),
+                            crossAxisCount: 2,
+                            mainAxisExtent: 269),
                         itemBuilder: (context, index) {
                           return SizedBox(
                             height: 359,
@@ -466,6 +468,46 @@ class _HomePageState extends State<HomePage> {
                                           color: Color(0xFF8C9099),
                                           fontSize: 10,
                                           fontWeight: FontWeight.w400),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(lstProducts[index]
+                                                .price
+                                                .toString() +
+                                            "/per plate"),
+                                      ],
+                                    ),
+                                    40.horizontalSpace,
+                                    Row(
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 30,
+                                          width: 30,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(30),
+                                            color: Color(0xFFF1F1F1),
+                                          ),
+                                          child: IconButton(
+                                            style: IconButton.styleFrom(
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
+                                              ),
+                                            ),
+                                            onPressed: () {},
+                                            icon: Icon(
+                                              Icons.add,
+                                              size: 15,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
