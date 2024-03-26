@@ -66,73 +66,67 @@ class _FavouritePageState extends State<FavouritePage>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 320,
-              width: 390,
-              child: Stack(
-                children: [
-                  Image.asset(
-                    widget.hotels.img,
-                    width: 390,
-                    fit: BoxFit.cover,
-                    height: 320,
-                  ),
-                  Positioned(
-                    top: 64,
-                    left: 16,
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 44,
-                      width: 44,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: AppColor().lightGrey,
+            Stack(
+              children: [
+                Image.asset(
+                  widget.hotels.img,
+                  width: 390,
+                  fit: BoxFit.fill,
+                  height: 320,
+                ),
+                Positioned(
+                  top: 64,
+                  left: 16,
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 44,
+                    width: 44,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: AppColor.lightGrey,
+                    ),
+                    child: IconButton(
+                      style: IconButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                        ),
                       ),
-                      child: IconButton(
-                        style: IconButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          size: 24,
-                        ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        size: 24,
                       ),
                     ),
                   ),
-                  Positioned(
-                    top: 64,
-                    right: 16,
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 44,
-                      width: 44,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: AppColor().lightGrey,
+                ),
+                Positioned(
+                  top: 64,
+                  right: 16,
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 44,
+                    width: 44,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: AppColor.lightGrey,
+                    ),
+                    child: IconButton(
+                      style: IconButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                        ),
                       ),
-                      child: IconButton(
-                        style: IconButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(
-                          Icons.more_vert,
-                          size: 24,
-                        ),
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.more_vert,
+                        size: 24,
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
             20.verticalSpace,
             Row(
@@ -143,7 +137,7 @@ class _FavouritePageState extends State<FavouritePage>
                 width: 86,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: AppColor().lightGrey,
+                  color: AppColor.lightGrey,
                 ),
                 margin: const EdgeInsets.only(left: 8),
                 child: Text(listOfCategories[index]),
@@ -159,14 +153,14 @@ class _FavouritePageState extends State<FavouritePage>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      width: 256,
+                      width: 220,
                       height: 52,
                       child: Text(
                         widget.hotels.title,
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w700,
-                          color: AppColor().lightBlack,
+                          color: AppColor.lightBlack,
                         ),
                       ),
                     ),
@@ -176,7 +170,7 @@ class _FavouritePageState extends State<FavouritePage>
                       width: 44,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: AppColor().orange,
+                        color: AppColor.orange,
                       ),
                       child: IconButton(
                         style: IconButton.styleFrom(
@@ -188,7 +182,7 @@ class _FavouritePageState extends State<FavouritePage>
                         icon: Icon(
                           Icons.favorite_border,
                           size: 24,
-                          color: AppColor().white,
+                          color: AppColor.white,
                         ),
                       ),
                     ),
@@ -200,22 +194,22 @@ class _FavouritePageState extends State<FavouritePage>
             Padding(
               padding: const EdgeInsets.only(left: 14.0),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
                       Icon(
                         Icons.navigation,
-                        color: AppColor().lightBlack,
+                        color: AppColor.lightBlack,
                       ),
                       Text("${widget.hotels.distance} away from you"),
                     ],
                   ),
-                  15.horizontalSpace,
                   Row(
                     children: [
                       Icon(
                         Icons.star,
-                        color: AppColor().yellow,
+                        color: AppColor.yellow,
                       ),
                       Text("${widget.hotels.raings} (1.1k+ Reviews)"),
                     ],
@@ -232,14 +226,14 @@ class _FavouritePageState extends State<FavouritePage>
                     TextSpan(
                       text: "\$20.00",
                       style: TextStyle(
-                          color: AppColor().lightBlack,
+                          color: AppColor.lightBlack,
                           fontWeight: FontWeight.w700,
                           fontSize: 22),
                     ),
                     TextSpan(
                       text: "  /per plate",
                       style: TextStyle(
-                          color: AppColor().lightBlack,
+                          color: AppColor.lightBlack,
                           fontSize: 12,
                           fontWeight: FontWeight.w400),
                     ),
@@ -252,10 +246,10 @@ class _FavouritePageState extends State<FavouritePage>
               height: 25,
               width: double.infinity,
               child: TabBar(
-                labelColor: AppColor().lightBlack,
-                unselectedLabelColor: AppColor().grey,
+                labelColor: AppColor.lightBlack,
+                unselectedLabelColor: AppColor.grey,
                 indicatorSize: TabBarIndicatorSize.label,
-                indicatorColor: AppColor().orange,
+                indicatorColor: AppColor.orange,
                 controller: tabController,
                 tabs: const [
                   Tab(
@@ -305,81 +299,77 @@ class _FavouritePageState extends State<FavouritePage>
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 16.0),
+              padding: const EdgeInsets.only(left: 16.0, right: 16.0),
               child: SizedBox(
-                height: 630,
+                height: 580,
                 width: 390,
                 child: GridView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: lstProducts.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisSpacing: 24,
-                      crossAxisSpacing: 18,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
                       crossAxisCount: 2,
                       mainAxisExtent: 279),
                   itemBuilder: (context, index) {
-                    return SizedBox(
-                      height: 359,
-                      width: 170,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Stack(
-                              children: [
-                                Image.asset(
-                                  lstProducts[index].img,
-                                  width: 170,
-                                  height: 152,
-                                ),
-                                Positioned(
-                                  top: 10,
-                                  left: 10,
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    height: 30,
-                                    width: 30,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(50),
-                                      color: AppColor().lightGrey,
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Stack(
+                            children: [
+                              Image.asset(
+                                lstProducts[index].img,
+                                fit: BoxFit.contain,
+                              ),
+                              Positioned(
+                                top: 10,
+                                left: 10,
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    color: AppColor.lightGrey,
+                                  ),
+                                  child: IconButton(
+                                    style: IconButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(50),
+                                      ),
                                     ),
-                                    child: IconButton(
-                                      style: IconButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(50),
-                                        ),
-                                      ),
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.favorite_border,
-                                        size: 17,
-                                      ),
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      Icons.favorite_border,
+                                      size: 17,
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                          12.verticalSpace,
-                          SizedBox(
-                            height: 17,
-                            width: 170,
-                            child: Text(
-                              lstProducts[index].title,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 14,
+                        ),
+                        12.verticalSpace,
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: 170,
+                              height: 30,
+                              child: Text(
+                                lstProducts[index].title,
+                                style: const TextStyle(
+                                  overflow: TextOverflow.visible,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 14,
+                                ),
                               ),
                             ),
-                          ),
-                          23.verticalSpace,
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
-                            child: Row(
+                            23.verticalSpace,
+                            Row(
                               children: [
                                 const Icon(
                                   Icons.navigation,
@@ -389,38 +379,33 @@ class _FavouritePageState extends State<FavouritePage>
                                 Text(
                                   "${lstProducts[index].distance} away from you",
                                   style: TextStyle(
-                                      color: AppColor().grey,
+                                      color: AppColor.grey,
                                       fontSize: 10,
                                       fontWeight: FontWeight.w400),
                                 ),
                               ],
                             ),
-                          ),
-                          4.horizontalSpace,
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
-                            child: Row(
+                            Row(
                               children: [
                                 Icon(
                                   Icons.star,
-                                  color: AppColor().yellow,
+                                  color: AppColor.yellow,
                                   size: 14,
                                 ),
                                 4.horizontalSpace,
                                 Text(
                                   "${lstProducts[index].rating} (1.1k +Reviews)",
                                   style: TextStyle(
-                                      color: AppColor().grey,
+                                      color: AppColor.grey,
                                       fontSize: 10,
                                       fontWeight: FontWeight.w400),
                                 ),
                               ],
                             ),
-                          ),
-                          6.verticalSpace,
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
-                            child: Row(
+                            6.verticalSpace,
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 RichText(
                                   text: TextSpan(
@@ -429,147 +414,50 @@ class _FavouritePageState extends State<FavouritePage>
                                         text:
                                             lstProducts[index].price.toString(),
                                         style: TextStyle(
-                                            color: AppColor().orange,
+                                            color: AppColor.orange,
                                             fontWeight: FontWeight.w700,
                                             fontSize: 14),
                                       ),
                                       TextSpan(
                                         text: "  /per plate",
                                         style: TextStyle(
-                                            color: AppColor().lightBlack,
+                                            color: AppColor.lightBlack,
                                             fontSize: 12,
                                             fontWeight: FontWeight.w400),
                                       ),
                                     ],
                                   ),
                                 ),
-                                40.horizontalSpace,
-                                Row(
-                                  children: [
-                                    Container(
-                                      alignment: Alignment.center,
-                                      height: 30,
-                                      width: 30,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(30),
-                                        color: AppColor().lightGrey,
-                                      ),
-                                      child: IconButton(
-                                        style: IconButton.styleFrom(
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(50),
-                                          ),
-                                        ),
-                                        onPressed: () {},
-                                        icon: const Icon(
-                                          Icons.add,
-                                          size: 15,
-                                        ),
+                                Container(
+                                  alignment: Alignment.center,
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                    color: AppColor.lightGrey,
+                                  ),
+                                  child: IconButton(
+                                    style: IconButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(50),
                                       ),
                                     ),
-                                  ],
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      Icons.add,
+                                      size: 15,
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
-                          ),
-                        ],
-                      ),
+                          ],
+                        ),
+                      ],
                     );
                   },
                 ),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      height: 55,
-                      width: 170,
-                      child: Material(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12)),
-                        color: Colors.grey.shade300,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                              alignment: Alignment.center,
-                              height: 30,
-                              width: 30,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: AppColor().lightGrey,
-                              ),
-                              child: IconButton(
-                                alignment: Alignment.center,
-                                style: IconButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50),
-                                  ),
-                                ),
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.minimize_sharp,
-                                  size: 17,
-                                ),
-                              ),
-                            ),
-                            const Text("2"),
-                            Container(
-                              alignment: Alignment.center,
-                              height: 30,
-                              width: 30,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: AppColor().lightGrey,
-                              ),
-                              child: IconButton(
-                                style: IconButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50),
-                                  ),
-                                ),
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.add,
-                                  size: 17,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    SizedBox(
-                      height: 55,
-                      width: 170,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          backgroundColor: AppColor().orange,
-                        ),
-                        onPressed: () {},
-                        child: Text(
-                          'Add to cart',
-                          style: TextStyle(
-                              color: AppColor().white,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18),
-                        ),
-                      ),
-                    ),
-                  ],
-                )
-              ],
             ),
           ],
         ),

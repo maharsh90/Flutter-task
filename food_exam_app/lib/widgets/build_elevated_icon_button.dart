@@ -26,7 +26,7 @@ class buildElevatedIconButton extends StatelessWidget {
       ),
       icon: Icon(
         icon,
-        color: AppColor().white,
+        color: AppColor.white,
       ),
       onPressed: () {},
       label: Text(

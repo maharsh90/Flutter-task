@@ -18,13 +18,13 @@ class buildButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        backgroundColor: AppColor().orange,
+        backgroundColor: AppColor.orange,
       ),
       onPressed: voidcallback,
       child: Text(
         txt,
         style: TextStyle(
-            color: AppColor().white, fontWeight: FontWeight.w600, fontSize: 18),
+            color: AppColor.white, fontWeight: FontWeight.w600, fontSize: 18),
       ),
     );
   }

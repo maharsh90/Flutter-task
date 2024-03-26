@@ -25,7 +25,7 @@ class buildTextFormField extends StatelessWidget {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(
-            color: AppColor().lightBlack,
+            color: AppColor.lightBlack,
           ),
         ),
       ),
