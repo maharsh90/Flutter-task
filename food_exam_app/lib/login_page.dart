@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_exam_app/home_page.dart';
 import 'package:food_exam_app/ui_helper/app_color.dart';
@@ -18,11 +17,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-          statusBarColor: AppColor.lightOrange,
-          statusBarIconBrightness: Brightness.light),
-    );
     return Scaffold(
       backgroundColor: AppColor.lightOrange,
       body: Stack(
@@ -152,7 +146,7 @@ class buildBottomSheet extends StatelessWidget {
                                 RequiredValidator(
                                     errorText: "please enter email"),
                                 EmailValidator(
-                                    errorText: "please enter valid email id"),
+                                    errorText: "Please enter valid email id"),
                               ]),
                               textInputAction: TextInputAction.next),
                           15.verticalSpace,

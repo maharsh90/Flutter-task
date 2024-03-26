@@ -116,7 +116,8 @@ class _HomePageState extends State<HomePage> {
                         height: 50,
                         width: ScreenUtil().screenWidth,
                         child: SearchAnchor(
-                          builder: (context, controller) {
+                          builder: (BuildContext context,
+                              SearchController controller) {
                             return SearchBar(
                               elevation: MaterialStateProperty.all(0),
                               shape: const MaterialStatePropertyAll(
@@ -133,12 +134,12 @@ class _HomePageState extends State<HomePage> {
                               hintStyle: MaterialStatePropertyAll(TextStyle(
                                 color: AppColor.grey,
                               )),
-                              controller: searchController,
+                              controller: controller,
                               onTap: () {
-                                searchController.openView();
+                                controller.openView();
                               },
                               onChanged: (_) {
-                                searchController.openView();
+                                controller.openView();
                               },
                               leading: IconButton(
                                 onPressed: () {},
@@ -162,7 +163,15 @@ class _HomePageState extends State<HomePage> {
                           suggestionsBuilder: (BuildContext context,
                               SearchController controller) {
                             return List<ListTile>.generate(5, (int index) {
-                              return const ListTile();
+                              final String item = "item $index";
+                              return ListTile(
+                                title: Text(item),
+                                onTap: () {
+                                  setState(() {
+                                    controller.closeView(item);
+                                  });
+                                },
+                              );
                             });
                           },
                         ),
@@ -267,7 +276,7 @@ class _HomePageState extends State<HomePage> {
                       height: 229,
                       width: ScreenUtil().screenWidth,
                       child: ListView.builder(
-                        padding: EdgeInsets.only(left: 6),
+                        padding: const EdgeInsets.only(left: 6),
                         scrollDirection: Axis.horizontal,
                         itemCount: lstHotels.length,
                         physics: const BouncingScrollPhysics(),
@@ -328,7 +337,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ],
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   Text(
                                     lstHotels[index].title,
                                     style: TextStyle(
@@ -338,7 +347,7 @@ class _HomePageState extends State<HomePage> {
                                       letterSpacing: 0.5,
                                     ),
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
@@ -384,14 +393,14 @@ class _HomePageState extends State<HomePage> {
               ),
               8.verticalSpace,
               Container(
-                height: 570,
+                height: 627,
                 width: ScreenUtil().screenWidth,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+                  padding: const EdgeInsets.only(left: 16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
@@ -432,6 +441,7 @@ class _HomePageState extends State<HomePage> {
                       15.verticalSpace,
                       Expanded(
                         child: GridView.builder(
+                          padding: const EdgeInsets.only(right: 16.0),
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: lstProducts.length,
                           gridDelegate:
@@ -439,7 +449,7 @@ class _HomePageState extends State<HomePage> {
                                   mainAxisSpacing: 5,
                                   crossAxisSpacing: 15,
                                   crossAxisCount: 2,
-                                  mainAxisExtent: 249),
+                                  mainAxisExtent: 279),
                           itemBuilder: (context, index) {
                             return Column(
                               mainAxisSize: MainAxisSize.min,
@@ -485,12 +495,30 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                                 12.verticalSpace,
+                                Column(
+                                  children: [
+                                    SizedBox(
+                                      width: 180,
+                                      height: 30,
+                                      child: Text(
+                                        lstProducts[index].title,
+                                        style: TextStyle(
+                                          overflow: TextOverflow.visible,
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                6.verticalSpace,
                                 Row(
                                   children: [
                                     const Icon(
                                       Icons.navigation,
                                       size: 14,
                                     ),
+                                    4.horizontalSpace,
                                     Text(
                                       "${lstProducts[index].distance} away from you",
                                       style: TextStyle(
@@ -508,6 +536,7 @@ class _HomePageState extends State<HomePage> {
                                       color: AppColor.yellow,
                                       size: 14,
                                     ),
+                                    4.horizontalSpace,
                                     Text(
                                       "${lstProducts[index].rating} (1.1k +Reviews)",
                                       style: TextStyle(
@@ -586,6 +615,7 @@ class _HomePageState extends State<HomePage> {
             selectedItemColor: AppColor.lightBlack,
             showSelectedLabels: false,
             showUnselectedLabels: false,
+            elevation: 15,
             type: BottomNavigationBarType.fixed,
             items: [
               BottomNavigationBarItem(
@@ -638,7 +668,7 @@ class _HomePageState extends State<HomePage> {
                         "./images/cart.png",
                         color: selectedIndex == 2
                             ? AppColor.lightBlack
-                            : AppColor.grey,
+                            : AppColor.white,
                       ),
                     )),
                 label: "df",

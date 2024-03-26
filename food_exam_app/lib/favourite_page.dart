@@ -180,8 +180,8 @@ class _FavouritePageState extends State<FavouritePage>
                         ),
                         onPressed: () {},
                         icon: Icon(
-                          Icons.favorite_border,
-                          size: 24,
+                          Icons.favorite,
+                          size: 20,
                           color: AppColor.white,
                         ),
                       ),
@@ -301,7 +301,7 @@ class _FavouritePageState extends State<FavouritePage>
             Padding(
               padding: const EdgeInsets.only(left: 16.0, right: 16.0),
               child: SizedBox(
-                height: 580,
+                height: 660,
                 width: 390,
                 child: GridView.builder(
                   physics: const NeverScrollableScrollPhysics(),
@@ -310,7 +310,7 @@ class _FavouritePageState extends State<FavouritePage>
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10,
                       crossAxisCount: 2,
-                      mainAxisExtent: 279),
+                      mainAxisExtent: 300),
                   itemBuilder: (context, index) {
                     return Column(
                       mainAxisSize: MainAxisSize.min,
@@ -357,7 +357,7 @@ class _FavouritePageState extends State<FavouritePage>
                         Column(
                           children: [
                             SizedBox(
-                              width: 170,
+                              width: 180,
                               height: 30,
                               child: Text(
                                 lstProducts[index].title,
