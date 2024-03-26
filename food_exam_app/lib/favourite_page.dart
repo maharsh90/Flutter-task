@@ -262,7 +262,7 @@ class _FavouritePageState extends State<FavouritePage>
               ),
             ),
             SizedBox(
-              height: 150,
+              height: 120,
               width: 358,
               child: TabBarView(
                 controller: tabController,
@@ -299,9 +299,10 @@ class _FavouritePageState extends State<FavouritePage>
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+              padding:
+                  const EdgeInsets.only(left: 16.0, right: 16.0, top: 15.0),
               child: SizedBox(
-                height: 660,
+                height: 600,
                 width: 390,
                 child: GridView.builder(
                   physics: const NeverScrollableScrollPhysics(),
